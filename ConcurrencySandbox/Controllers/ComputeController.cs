@@ -11,7 +11,7 @@ namespace ConcurrencySandbox.Controllers
 {
     public class ComputeController : ApiController
     {
-        public async Task<string> Get([FromUri] long cycles)
+        public async Task<Dictionary<string, string>> Get([FromUri] long cycles)
         {
             var computations = new Computations();
 
@@ -36,7 +36,7 @@ namespace ConcurrencySandbox.Controllers
             var results = JsonConvert.SerializeObject(returnDictionary);
             LogManager.GetCurrentClassLogger().Log(LogLevel.Info, results);
 
-            return results;
+            return returnDictionary;
         }
     }
 }
