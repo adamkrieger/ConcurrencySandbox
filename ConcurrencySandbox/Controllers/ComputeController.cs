@@ -13,6 +13,9 @@ namespace ConcurrencySandbox.Controllers
     {
         public async Task<Dictionary<string, string>> Get([FromUri] long cycles)
         {
+            //Sanitize
+            cycles = cycles > 1000000000 ? 1 : cycles;
+
             var computations = new Computations();
 
             var stopwatch = new Stopwatch();
